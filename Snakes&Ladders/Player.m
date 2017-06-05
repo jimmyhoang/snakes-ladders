@@ -27,16 +27,38 @@
                        @95 : @73,
                        @99 : @78,
                        };
-                       
-                       
+        _gameOver = NO;
     }
     return self;
 }
 
 -(void)roll {
     int roll = arc4random_uniform(6) + 1;
+    
     NSLog(@"You rolled %d", roll);
     self.currentSquare += roll;
+    
+    NSNumber* current = [NSNumber numberWithInteger:self.currentSquare];
+    
+    if ([self.gameLogic objectForKey:current]) {
+        NSNumber* newSquare = [self.gameLogic objectForKey:current];
+        
+        if ([newSquare integerValue] > self.currentSquare) {
+            NSLog(@"Stairway to heaven!");
+            NSLog(@"You jumped from %ld to %@!",self.currentSquare, newSquare);
+        } else if ([newSquare integerValue] < self.currentSquare) {
+            NSLog(@"Slippery snake!");
+            NSLog(@"You dropped from %ld to %@!",self.currentSquare, newSquare);
+        }
+        self.currentSquare = [newSquare integerValue];
+    } else {
+        NSLog(@"You landed on %ld", self.currentSquare);
+    }
+    
+    if (self.currentSquare >= 100) {
+        self.gameOver = YES;
+        NSLog(@"Game over! You win!");
+    }
 }
 
 @end

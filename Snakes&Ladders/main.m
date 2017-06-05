@@ -14,21 +14,20 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         InputHandler* input = [[InputHandler alloc] init];
         Player* player = [[Player alloc] init];
-        
         NSString* user = [[NSString alloc] init];
-        BOOL gameOn = YES;
         
-        while (gameOn) {
+        NSLog(@"WELCOME TO SNAKES & LADDERS!!");
+        while (!player.gameOver) {
             NSLog(@"Type 'roll' or 'r' to roll the dice");
             user = [input input];
-            
+
             if ([user localizedCaseInsensitiveContainsString:@"roll"] || [user localizedCaseInsensitiveContainsString:@"r"]) {
                 [player roll];
-                NSLog(@"You are on %ld square",player.currentSquare);
                 
             } else {
                 NSLog(@"Invalid command.");
             }
+
             
             
         }
