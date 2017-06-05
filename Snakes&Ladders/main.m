@@ -44,7 +44,8 @@ int main(int argc, const char * argv[]) {
             user = [input input];
 
             if ([user localizedCaseInsensitiveContainsString:@"roll"] || [user localizedCaseInsensitiveContainsString:@"r"]) {
-                [playerManager roll];                
+                [playerManager roll];
+                NSLog(@"%@",[playerManager score]);
                 if([playerManager currentPlayer].currentSquare >= 100) {
                     NSLog(@"Game over! %@ has won",[playerManager currentPlayer].name);
                     [playerManager.players removeAllObjects];

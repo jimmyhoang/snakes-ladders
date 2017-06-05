@@ -22,5 +22,6 @@
 
 -(void)roll;
 -(NSString*)output;
+-(NSString*)score;
 
 @end

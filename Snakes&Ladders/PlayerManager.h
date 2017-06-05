@@ -18,5 +18,6 @@
 -(void)roll;
 -(NSString*)output;
 -(Player*)currentPlayer;
+-(NSString*)score;
 
 @end

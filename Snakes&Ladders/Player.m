@@ -67,4 +67,11 @@
     return output;
 }
 
+-(NSString *)score {
+    NSString* score = [NSString stringWithFormat:@"%ld",self.currentSquare];
+    NSString* combined = [NSString stringWithFormat:@"%@: %@",self.name,score];
+    
+    return combined;
+}
+
 @end

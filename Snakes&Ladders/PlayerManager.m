@@ -48,5 +48,20 @@
     
  }
 
+-(NSString*)score {
+    NSMutableString* scores = [[NSMutableString alloc] init];
+    [scores appendString:@"Scores: "];
+    
+    for (Player* player in self.players) {
+        [scores appendString:[player score]];
+        [scores appendString:@", "];
+    }
+    
+    NSString* output = [NSString stringWithString:scores];
+
+    
+    return output;
+}
+
 
 @end
