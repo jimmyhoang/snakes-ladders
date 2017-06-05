@@ -10,6 +10,7 @@
 		FF4BC6CD1EE4C468004A74D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4BC6CC1EE4C468004A74D7 /* main.m */; };
 		FF4BC6D51EE4C590004A74D7 /* InputHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4BC6D41EE4C590004A74D7 /* InputHandler.m */; };
 		FF4BC6D81EE4C772004A74D7 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4BC6D71EE4C772004A74D7 /* Player.m */; };
+		FF4BC6E41EE4E0A6004A74D7 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4BC6E31EE4E0A6004A74D7 /* PlayerManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		FF4BC6D41EE4C590004A74D7 /* InputHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputHandler.m; sourceTree = "<group>"; };
 		FF4BC6D61EE4C772004A74D7 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		FF4BC6D71EE4C772004A74D7 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		FF4BC6E21EE4E0A6004A74D7 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
+		FF4BC6E31EE4E0A6004A74D7 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				FF4BC6D41EE4C590004A74D7 /* InputHandler.m */,
 				FF4BC6D61EE4C772004A74D7 /* Player.h */,
 				FF4BC6D71EE4C772004A74D7 /* Player.m */,
+				FF4BC6E21EE4E0A6004A74D7 /* PlayerManager.h */,
+				FF4BC6E31EE4E0A6004A74D7 /* PlayerManager.m */,
 			);
 			path = "Snakes&Ladders";
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			files = (
 				FF4BC6CD1EE4C468004A74D7 /* main.m in Sources */,
 				FF4BC6D81EE4C772004A74D7 /* Player.m in Sources */,
+				FF4BC6E41EE4E0A6004A74D7 /* PlayerManager.m in Sources */,
 				FF4BC6D51EE4C590004A74D7 /* InputHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +264,7 @@
 				FF4BC6D21EE4C468004A74D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

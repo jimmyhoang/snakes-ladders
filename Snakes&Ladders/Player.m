@@ -8,6 +8,7 @@
 
 #import "Player.h"
 
+
 @implementation Player
 
 - (instancetype)init
@@ -28,6 +29,7 @@
                        @99 : @78,
                        };
         _gameOver = NO;
+        _oldSquare = 0;
     }
     return self;
 }
@@ -35,30 +37,34 @@
 -(void)roll {
     int roll = arc4random_uniform(6) + 1;
     
-    NSLog(@"You rolled %d", roll);
-    self.currentSquare += roll;
+    NSLog(@"You rolled %d!", roll);
+    self.currentSquare = self.currentSquare + roll;
+    self.oldSquare = [NSNumber numberWithInteger:self.currentSquare];
     
     NSNumber* current = [NSNumber numberWithInteger:self.currentSquare];
     
     if ([self.gameLogic objectForKey:current]) {
-        NSNumber* newSquare = [self.gameLogic objectForKey:current];
-        
-        if ([newSquare integerValue] > self.currentSquare) {
-            NSLog(@"Stairway to heaven!");
-            NSLog(@"You jumped from %ld to %@!",self.currentSquare, newSquare);
-        } else if ([newSquare integerValue] < self.currentSquare) {
-            NSLog(@"Slippery snake!");
-            NSLog(@"You dropped from %ld to %@!",self.currentSquare, newSquare);
-        }
-        self.currentSquare = [newSquare integerValue];
+        self.currentSquare = [[self.gameLogic objectForKey:current] integerValue];
+    }
+
+}
+
+
+-(NSString*) output {
+    
+    NSString* output = [[NSString alloc] init];
+    
+    if ([self.oldSquare integerValue] < self.currentSquare) {
+        output = [NSString stringWithFormat:@"Stairway to heaven!\nYou jumped from %@ to %ld!", self.oldSquare, self.currentSquare];
+    } else if ([self.oldSquare integerValue] > self.currentSquare) {
+        output = [NSString stringWithFormat:@"Slippery snake!\nYou dropped from %@ to %ld!", self.oldSquare, self.currentSquare];
     } else {
-        NSLog(@"You landed on %ld", self.currentSquare);
+        output = [NSString stringWithFormat:@"You landed on %ld", self.currentSquare];
     }
     
-    if (self.currentSquare >= 100) {
-        self.gameOver = YES;
-        NSLog(@"Game over! You win!");
-    }
+
+
+    return output;
 }
 
 @end
