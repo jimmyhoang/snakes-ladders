@@ -17,6 +17,7 @@ int main(int argc, const char * argv[]) {
         
         NSString* user = [[NSString alloc] init];
         NSString* numberOfPlayers = [[NSString alloc] init];
+        NSString* choice = [[NSString alloc] init];
         
         NSLog(@"WELCOME TO SNAKES & LADDERS!!");
         
@@ -29,15 +30,37 @@ int main(int argc, const char * argv[]) {
             
                 if ([numberOfPlayers intValue]) {
                     [playerManager createPlayers:[numberOfPlayers intValue]];
-                } else if ([numberOfPlayers localizedCaseInsensitiveContainsString:@"quit"]) {
-                    NSLog(@"See you later!");
+                } else {
                     break;
                 }
 
             }
             
             if ([numberOfPlayers localizedCaseInsensitiveContainsString:@"quit"]) {
-                break;
+                NSLog(@"Would you like to quit or restart?");
+                choice = [input input];
+                
+                if([choice localizedCaseInsensitiveContainsString:@"quit"]) {
+                    NSLog(@"Thanks for playing, see you later!");
+                    break;
+                } else if ([choice localizedCaseInsensitiveContainsString:@"restart"]) {
+                    
+                    numberOfPlayers = @"0";
+                    while ([numberOfPlayers intValue] == 0) {
+                        
+                        NSLog(@"Please enter the number of players:");
+                        numberOfPlayers = [input input];
+                        
+                        if ([numberOfPlayers intValue]) {
+                            [playerManager createPlayers:[numberOfPlayers intValue]];
+                        }
+                        
+                        
+                    }
+
+                    
+                }
+                
             }
             
             NSLog(@"Type 'roll' or 'r' to roll the dice");
@@ -46,6 +69,7 @@ int main(int argc, const char * argv[]) {
             if ([user localizedCaseInsensitiveContainsString:@"roll"] || [user localizedCaseInsensitiveContainsString:@"r"]) {
                 [playerManager roll];
                 NSLog(@"%@",[playerManager score]);
+                
                 if([playerManager currentPlayer].currentSquare >= 100) {
                     NSLog(@"Game over! %@ has won",[playerManager currentPlayer].name);
                     [playerManager.players removeAllObjects];
